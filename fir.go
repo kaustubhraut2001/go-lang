@@ -44,7 +44,11 @@ func main() {
 		"completed":     8,
 		"not completed": 0,
 	}
-	fetchmapvalues := mp["completed"]
+	fetchmapvalues, err := mp["available"]
 	fmt.Println(fetchmapvalues)
+	if err {
+		fmt.Println(err, "error occured")
+		return
+	}
 
 }
