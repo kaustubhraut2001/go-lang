@@ -37,4 +37,6 @@ func main() {
 
 	var index int = 2
 	coursec = append(coursec[:index])
+	coursec = append(coursec, coursec[index:]...)
+	fmt.Println(coursec)
 }
