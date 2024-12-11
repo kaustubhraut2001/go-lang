@@ -18,4 +18,7 @@ func main() {
 	for key, value := range fruitMap {
 		fmt.Printf("Key : %s , Value : %s \n", key, value)
 	}
+	for _, value := range fruitMap {
+		fmt.Printf("Key : %s , Value : %s \n", value)
+	}
 }
