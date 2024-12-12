@@ -10,7 +10,7 @@ func main() {
 	mydefer()
 
 	// defer make use of last in first out fif fashion so the last one will pritn first and then previous things
-
+	// mackadons queue (stack we can say for better undertsanding) is created
 }
 
 func mydefer() {
