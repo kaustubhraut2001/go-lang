@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"strings"
 )
 
 func main() {
@@ -21,6 +22,14 @@ func perfromGetdata() {
 	}
 
 	cont, _ := ioutil.ReadAll(res.Body)
+
+	var ress strings.Builder
+
 	fmt.Println(string(cont))
+	byteCount, _ := ress.Write(cont)
+	fmt.Println(byteCount)
+
+	fmt.Println(ress.String())
+
 	defer res.Body.Close() // closing the response body
 }
