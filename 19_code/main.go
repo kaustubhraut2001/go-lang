@@ -30,6 +30,7 @@ func perfromGetdata() {
 	fmt.Println(byteCount)
 
 	fmt.Println(ress.String())
+	fmt.Println(ress.Len())
 
 	defer res.Body.Close() // closing the response body
 }
