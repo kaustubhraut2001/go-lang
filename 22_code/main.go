@@ -30,3 +30,29 @@ func encodejson() {
 	finaljson, _ := json.MarshalIndent(courssee, "", "\t")
 	fmt.Printf("%s\n", finaljson)
 }
+
+
+func decodejson(){
+	 jsondata := []byte{` {
+		"name":     "Reactjs",
+        "price":    233,
+        "platform": "Learcodeonline",
+        "password": "abc123",
+        "tags":     []string{"web-dev", "dsa"},
+	}`
+}
+var courseess course
+a := json.Valid(jsondata)
+
+if a {
+	fmt.Println("Json data")
+	json.Marshal(jsondata , &courseess)
+
+}
+
+
+
+
+
+
+}
