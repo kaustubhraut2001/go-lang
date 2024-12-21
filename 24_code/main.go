@@ -4,8 +4,11 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"strconv"
+	"time"
 
 	"github.com/gorilla/mux"
+	"golang.org/x/exp/rand"
 )
 
 // Model for course -file
@@ -27,8 +30,9 @@ var course []Course
 
 // middleware or helper -file
 
-func IsEmpty(c *Course) bool {
-	return c.CourseID == "" && c.CourseName == ""
+func (c *Course) IsEmpty() bool {
+	// return c.CourseID == "" && c.CourseName == ""
+	return c.CourseName == ""
 
 }
 
@@ -67,5 +71,28 @@ func getOneCourse(w http.ResponseWriter, r *http.Request) {
 	}
 
 	json.NewEncoder(w).Encode("No course found")
+
+}
+
+func createOneCourse(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("Create one course")
+	w.Header().Set("Content-Type", "application/json")
+	if r.Body == nil {
+		json.NewEncoder(w).Encode("No data found")
+		return
+	}
+	var course Course
+	_ = json.NewDecoder(r.Body).Decode(&course)
+	if course.IsEmpty() {
+		json.NewEncoder(w).Encode("No data found")
+		return
+	}
+
+	// genrating random id
+	rand.Seed(time.Now().UnixNano())
+	course.CourseID = strconv.Itoa(rand.Intn(100)) // string con is for string conversion
+	course = append(course, course)
+	json.NewEncoder(w).Encode(course)
+	return
 
 }
